@@ -41,9 +41,9 @@ export default function Sidebar() {
                 alt="user-img" 
                 className="h-10 w-10 rounded-full xl:mr-2"
             />
-            <div className="leading-5 hidden xl:inline">
-                <h4 className="font-bold">João Victor A.P Sperandio</h4>
-                <p className="text-gray-500">@Sperandio.JoaoVictor</p>
+            <div className="max-w-[120px] leading-5 hidden xl:inline">
+                <h4 className="font-bold">João Victor A. P. Sperandio</h4>
+                <p className="text-gray-500">@Sperandio.Joao</p>
             </div>
             <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline"/>
         </div>
