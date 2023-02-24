@@ -1,10 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import { ChartBarIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, ShareIcon, TrashIcon } from "@heroicons/react/outline";
 
 export default function Post({post}) {
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-400">
         {/** user Image */}
-        <img className="h-11 w-11 rounded-full mr-4" src={post.userImg} alt="" />
+        <img 
+            className="h-11 w-11 rounded-full mr-4" 
+            src={post.userImg} 
+            alt="" 
+        />
         {/** Right side */}
         <div className="">
             {/** Header */}
@@ -17,11 +22,15 @@ export default function Post({post}) {
                 </div>
                 {/** dot icon */}
                 <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-200 hover:text-sky-500 p-2"/>
-            </div>
+            </div> 
             {/** Post Text */}
             <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">{post.text}</p>
             {/** Post Image */}
-            <img className="rounded-2xl mr-2" src={post.img} alt="" />
+            <img 
+                className="rounded-2xl mr-2" 
+                src={post.img} 
+                alt="" 
+            />
             {/** Icons */}
             <div className="flex justify-between text-gray-500 p-2 ">
               <ChatIcon className="h-9 w-9 hoverEffect p-1 hover:text-sky-500 hover:bg-sky-200"/>
