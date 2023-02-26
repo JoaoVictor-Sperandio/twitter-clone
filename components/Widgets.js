@@ -9,13 +9,17 @@ export default function Widgets({ newsResults, randomUsersResults }) {
     const [articleNum, setArticleNum] = useState(3)
     const [randomUserNum, setRandomUserNum] = useState(3)
     return (
-        <div className="xl:w-[600px] hidden lg:inline ml-8 space-y-5">
+        <div className="xl:w-[600px] hidden lg:inline lg:max-w-md ml-8 space-y-5"> {/** Top div */}
+            
+            {/** Search bar*/}
             <div className="w-[90%] xl:w-[75%] sticky top-0 bg-white py-2 z-50">
                 <div className="flex items-center p-3 rounded-full bg-red-200 relative">
                     <SearchIcon className="h-5 z-50 text-gray-500"/>
                     <input className="absolute inset-0 rounded-full pl-11 border-gray-500 text-gray-700 focus:shadow-lg focus:bg-white bg-gray-200" type="text" placeholder="Search Twitter" />
                 </div>
             </div>
+
+            {/** What's Happening */}
             <div className="text-gray-700 space-y-3 bg-gray-200 roudned-xl pt-2 w-[90%] xl:w[75%]">
                 <h4 className="font-bold text-xl px-4">What's Happening</h4>
                 {newsResults.slice(0, articleNum).map((article) =>(
@@ -25,6 +29,8 @@ export default function Widgets({ newsResults, randomUsersResults }) {
                     Show more
                 </button>
             </div>
+
+            {/** Who To Follow */}
             <div className="text-gray-700 space-y-3 bg-gray-200 roudned-xl pt-2 w-[90%] xl:w[75%] sticky top-16">
                 <h4 className="font-bold text-xl px-4">Who To Follow</h4>
                 {randomUsersResults.slice(0, randomUserNum).map((randomUser) => (
@@ -41,6 +47,7 @@ export default function Widgets({ newsResults, randomUsersResults }) {
                     Show More
                 </button>
             </div>
+
         </div>
     )
 }

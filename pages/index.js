@@ -16,7 +16,7 @@ export default function Home({ newsResults, randomUsersResults }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className='flex min-h-screen mx-auto'>
+      <main className='flex min-h-screen mx-auto align-center'>
 
         {/** Side bar */}
         <Sidebar />

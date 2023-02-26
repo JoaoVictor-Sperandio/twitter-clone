@@ -46,7 +46,7 @@ export default function Sidebar() {
                         />
                         <div className="max-w-[120px] leading-5 hidden xl:inline">
                             <h4 className="font-bold">{session.user.name}</h4>
-                            <p className="text-gray-500">@{session.user.uid}</p>
+                            <p className="text-gray-500">@{session.user.name.split(" ").join("").toLocaleLowerCase().slice(0,18)}</p>
                         </div>
                         <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline"/>
                     </div>
