@@ -10,6 +10,7 @@ export default function Feed() {
       username: "Sperandio.Joao",
       userImg: "https://avatars.githubusercontent.com/u/104575223?v=4",
       img: "https://images.unsplash.com/photo-1677056781459-4f85f82df5fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8eEh4WVRNSExnT2N8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
+      alt:"post-img",
       text: "Amazing trip!!",
       timestamp: "2 hours ago",
     },
@@ -19,6 +20,7 @@ export default function Feed() {
       username: "Sperandio.Joao",
       userImg: "https://avatars.githubusercontent.com/u/104575223?v=4",
       img: "https://images.unsplash.com/photo-1677050564225-a22616ed37f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      alt:"post-img",
       text: "Awesome car that i bought!!",
       timestamp: "3 days ago",
     }

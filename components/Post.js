@@ -8,7 +8,7 @@ export default function Post({post}) {
         <img 
             className="h-11 w-11 rounded-full mr-4" 
             src={post.userImg} 
-            alt="" 
+            alt="user-img" 
         />
         {/** Right side */}
         <div className="">
@@ -29,7 +29,7 @@ export default function Post({post}) {
             <img 
                 className="rounded-2xl mr-2" 
                 src={post.img} 
-                alt="" 
+                alt="post-img" 
             />
             {/** Icons */}
             <div className="flex justify-between text-gray-500 p-2 ">
