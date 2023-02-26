@@ -1,8 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
+import { db } from "@/firebase";
 import { ChartBarIcon, ChatIcon, DotsHorizontalIcon, HeartIcon, ShareIcon, TrashIcon } from "@heroicons/react/outline";
+import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
+import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
 import Moment from "react-moment";
+import { signIn, useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
+
 
 export default function Post({post}) {
+  const {data : session} = useSession();
+  const [likes, setLikes] = useState([  ]);
+  const [hasLiked, setHasLiked] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "posts", post.id, "likes"),
+      (snapshot) => setLikes(snapshot.docs)
+    )
+  }, [db]);
+
+  useEffect(() => {
+    setHasLiked(likes.findIndex((like) => like.id === session?.user.uid) !== -1)
+  }, [likes])
+
+  async function likePost() {
+    if(session){
+      if(hasLiked){
+        await deleteDoc(doc(db, "posts", post.id, "likes", session?.user.uid),{
+        })
+      }else{
+        await setDoc(doc(db, "posts", post.id, "likes", session?.user.uid), {
+          username: session?.user?.name.split(" ").join("").toLocaleLowerCase().slice(0,18),
+        });
+      }
+    }else{
+      signIn()
+    }
+  }
+
   return (
     <div className="flex p-3 cursor-pointer border-b border-gray-400">
         {/** user Image */}
@@ -30,7 +66,7 @@ export default function Post({post}) {
             <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">{post?.data()?.text}</p>
             {/** Post Image */}
             <img 
-                className="rounded-2xl mr-2 xl:max-w-[520px] xl:max-h-[520px] lg:max-w-[480px] lg:max-h-[480px]" 
+                className="rounded-2xl mr-2 xl:max-w-[520px] xl:max-h-[520px] lg:max-w-[480px] lg:max-h-[480px] sm:max-w-[480px] sm:max-h-[480px]" 
                 src={post?.data()?.image} 
                 alt="post-img" 
             />
@@ -38,7 +74,26 @@ export default function Post({post}) {
             <div className="flex justify-between text-gray-500 p-2 ">
               <ChatIcon className="h-9 w-9 hoverEffect p-1 hover:text-sky-500 hover:bg-sky-200"/>
               <TrashIcon className="h-9 w-9 hoverEffect p-1 hover:text-red-600 hover:bg-red-200"/>
-              <HeartIcon className="h-9 w-9 hoverEffect p-1 hover:text-red-600 hover:bg-red-200"/>
+              <div className="flex items-center">
+                {hasLiked ? (
+                  <HeartIconFilled 
+                    onClick={likePost}
+                    className="h-9 w-9 hoverEffect p-1 text-red-600 hover:bg-red-200"
+                  />
+                  ) : (
+                  <HeartIcon 
+                    onClick={likePost}
+                    className="h-9 w-9 hoverEffect p-1 hover:text-red-600 hover:bg-red-200"
+                  />
+                )}
+                {
+                  likes.length > 0? (
+                    <span className={`${hasLiked && "text-red-500"} text-sm sm:text-[15px] select-none`}>{likes.length}</span>
+                  ) : (
+                    <span className={`${hasLiked && "text-red-500"} text-sm sm:text-[15px] select-none`}>0</span>
+                  )
+                }
+              </div>
               <ShareIcon className="h-9 w-9 hoverEffect p-1 hover:text-sky-500 hover:bg-sky-200"/>
               <ChartBarIcon className="h-9 w-9 hoverEffect p-1 hover:text-sky-500 hover:bg-sky-200"/>
             </div>

@@ -19,6 +19,9 @@ export default NextAuth({
 
   callbacks:{
     async session({ session, token, user }){
+                                          // For some reason it doesn't work, 
+                                          //so we need to do this manually 
+                                          //for every place that we need to use the username...
       session.user.username = session.name//.split(" ").join("").toLocaleLowerCase();
       session.user.uid = token.sub;
       return session;
