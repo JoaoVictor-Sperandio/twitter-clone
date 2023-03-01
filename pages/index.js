@@ -3,6 +3,7 @@ import { Inter } from '@next/font/google'
 import Sidebar from '@/components/Sidebar'
 import Feed from '@/components/Feed'
 import Widgets from '@/components/Widgets'
+import CommentModal from '@/components/CommentModal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +29,7 @@ export default function Home({ newsResults, randomUsersResults }) {
           randomUsersResults={randomUsersResults.results}
         />
         {/** Modal    */}
-
+        <CommentModal />
       </main>
     
     </div>
