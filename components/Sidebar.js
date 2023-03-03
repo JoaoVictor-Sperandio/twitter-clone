@@ -40,7 +40,7 @@ export default function Sidebar() {
                     {/* Mini Profile */}
                     <div className='hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto'>
                         <img 
-                            src={session.user.image} 
+                            src={session?.user.image} 
                             alt="user-img" 
                             className="h-10 w-10 rounded-full xl:mr-2"
                         />
