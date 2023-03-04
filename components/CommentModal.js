@@ -29,7 +29,8 @@ export default function CommentModal() {
             name: session?.user?.name,
             username: session?.user?.name.split(" ").join("").toLocaleLowerCase().slice(0,18),
             userImg: session?.user?.image,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(),
+            userId: session?.user?.uid
         })
 
         setOpen(false);

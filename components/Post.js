@@ -92,9 +92,10 @@ export default function Post({ post, id }) {
                 <DotsHorizontalIcon className="h-10 hoverEffect w-10 hover:bg-sky-200 hover:text-sky-500 p-2"/>
             </div> 
             {/** Post Text */}
-            <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">{post?.data()?.text}</p>
+            <p onClick={() => router.push(`/posts/${id}`)} className="text-gray-800 text-[15px] sm:text-[16px] mb-2">{post?.data()?.text}</p>
             {/** Post Image */}
             <img 
+                onClick={() => router.push(`/posts/${id}`)}
                 className="rounded-2xl mr-2 xl:max-w-[520px] xl:max-h-[520px] lg:max-w-[480px] lg:max-h-[480px] sm:max-w-[480px] sm:max-h-[480px]" 
                 src={post?.data()?.image} 
                 //The alt shows a standard image even if the user didn't posted the image
