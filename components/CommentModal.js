@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { useRecoilState  } from "recoil"
 import { modalState, postIdState } from "../atom/modalAtom"
